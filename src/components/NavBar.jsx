@@ -1,13 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+import { removeUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function NavBar() {
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = async() => {
+    try {
+      await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      dispatch(removeUser());
+      navigate("/login");
+    } catch (error) {
+      console.log("Error during logout: ", error);
+    }
+  };
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">👩‍💻 DevTinder</Link>
+        <Link to="/" className="btn btn-ghost text-xl">
+          👩‍💻 DevTinder
+        </Link>
       </div>
 
       <div className="flex gap-2">
@@ -20,10 +37,7 @@ function NavBar() {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={user.photoUrl}
-                />
+                <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
               </div>
             </div>
             <ul
@@ -40,7 +54,7 @@ function NavBar() {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
