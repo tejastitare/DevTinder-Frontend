@@ -24,6 +24,10 @@ function Feed() {
     getFeed();
   }, []);
 
+  if(!feed) return;
+
+  if(feed.length<=0) return <div className="flex justify-center items-center p-3 mt-3 font-semibold">No New Users Found !</div>
+
   return (
     feed && (
       <div className="flex justify-center items-center mt-12">
