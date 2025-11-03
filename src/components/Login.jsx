@@ -23,6 +23,7 @@ function Login() {
         },
         { withCredentials: true }
       );
+      console.log(res);
       dispatch(addUser(res.data.user));
       Navigate("/");
 
