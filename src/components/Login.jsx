@@ -7,11 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 function Login() {
-  const [emailId, setEmailId] = useState("tejastitare@gmail.com");
-  const [password, setPassword] = useState("Tejas@123");
+  const [IsLoginForm, setIsLoginForm] = useState(true);
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -25,11 +28,29 @@ function Login() {
       );
       console.log(res);
       dispatch(addUser(res.data.user));
-      Navigate("/");
-
+      navigate("/");
     } catch (error) {
-      console.log(error);
-      setError(error?.respose?.message || "Login Failed. Please try again.");
+      setError(error?.response?.data || "Login Failed. Please try again.");
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/signup",
+        {
+          firstName,
+          lastName,
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      dispatch(addUser(res.data.data));
+      return navigate("/profile");
+    } catch (error) {
+      console.log("Signup Error: ", error);
     }
   };
 
@@ -37,6 +58,28 @@ function Login() {
     <div className="flex justify-center mt-20">
       <div className="card card-dash bg-base-300 w-96">
         <div className="card-body">
+          {!IsLoginForm && (
+            <>
+              <fieldset className="fieldset p-2">
+                <legend className="fieldset-legend">First Name</legend>
+                <input
+                  type="text"
+                  className="input"
+                  value={firstName}
+                  onChange={(e) => setfirstName(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset p-2">
+                <legend className="fieldset-legend">Last Name</legend>
+                <input
+                  type="text"
+                  className="input"
+                  value={lastName}
+                  onChange={(e) => setlastName(e.target.value)}
+                />
+              </fieldset>
+            </>
+          )}
           <fieldset className="fieldset p-2">
             <legend className="fieldset-legend">Email Id</legend>
             <input
@@ -55,12 +98,23 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
-          <div className="card-actions justify-center">
-            <p className="text-red-500">{error}</p>
-            <button onClick={handleLogin} className="btn btn-primary">
-              Login
+          <div className="m-auto">
+            <button
+              onClick={IsLoginForm ? handleLogin : handleSignup}
+              className="btn btn-primary mt-2"
+            >
+              {IsLoginForm ? "Login" : "Sign Up"}
             </button>
           </div>
+          <p
+            onClick={() => setIsLoginForm(!IsLoginForm)}
+            className="text-sm text-white font-semibold mt-3 m-auto cursor-pointer"
+          >
+            {IsLoginForm
+              ? "New User? Click here to Sign Up"
+              : "Existing User? Click here to Login"}
+          </p>
+          <p className="text-red-500 m-auto">{error}</p>
         </div>
       </div>
     </div>

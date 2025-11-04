@@ -24,7 +24,7 @@ function Connections() {
 
   if (!connections) return;
 
-  if (connections.length === 0) return <div>No Connections Found !</div>;
+  if (connections.length === 0) return <div className="flex justify-center items-center p-3 mt-3 font-semibold">No Connections Found !</div>;
   return (
     <div className="justify-center items-center mt-4 flex flex-col">
       <h1 className="text-3xl font-bold mb-4">Connections</h1>

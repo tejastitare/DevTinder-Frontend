@@ -10,10 +10,10 @@ import { addUser } from "../utils/userSlice";
 function EditProfile({ user }) {
   const [firstName, setfirstName] = useState(user.firstName);
   const [lastName, setlastName] = useState(user.lastName);
-  const [photoUrl, setphotoUrl] = useState(user.photoUrl);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [about, setAbout] = useState(user.about);
+  const [photoUrl, setphotoUrl] = useState(user.photoUrl || "");
+  const [age, setAge] = useState(user.age || "");
+  const [gender, setGender] = useState(user.gender || "");
+  const [about, setAbout] = useState(user.about || "");
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
@@ -102,8 +102,7 @@ function EditProfile({ user }) {
             />
           </fieldset>
           <div className="div">
-
-          <p className="text-red-500">{error}</p>
+            <p className="text-red-500">{error}</p>
           </div>
           <div className="card-actions justify-center">
             <button onClick={saveProfile} className="btn btn-primary">

@@ -4,9 +4,11 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest,removeRequest } from "../utils/requestSlice";
+import { useNavigate } from "react-router-dom";
 function Requests() {
   const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const reviewRequest = async (status, _id) => {
     try {
