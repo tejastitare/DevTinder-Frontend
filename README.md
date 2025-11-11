@@ -80,3 +80,12 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 
+- git pull - (it pushes the latest comments and update the code)
+
+
+**Adding a custom domain name**
+
+- purchased domain name from GoDaddy
+- signup on cloudflare and add a new domain name
+- change the nameservers on godaddy and point it to cloudflare
+- wait for some time till your nameservers are updated on cloudflare
