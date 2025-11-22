@@ -89,3 +89,17 @@ If you are developing a production application, we recommend using TypeScript wi
 - signup on cloudflare and add a new domain name
 - change the nameservers on godaddy and point it to cloudflare
 - wait for some time till your nameservers are updated on cloudflare
+
+
+**Sheduling Cron Jobs In NodeJs**
+
+- Installing node-cron
+- Learning about cron expressions syntax - crontab.guru
+- Schedule a job
+- date-fns
+- Find all the unique email address who have got connection request in previous day
+- send Email
+- Explore queue mechanism to send bulk emails
+- Amazon SES bulk Emails
+- Make sendEmail function dynamics
+- bee-queue & bull npm packages
