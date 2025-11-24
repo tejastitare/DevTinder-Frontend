@@ -4,6 +4,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 function Connections() {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function Connections() {
 
       <div className="card-body text-white text-3xl w-full flex gap-4 items-center">
         {connections.map((connection, index) => (
-          <div key={index} className="card shadow-sm items-center w-[30%] bg-base-300">
+          <div key={index} className="card px-8 flex flex-row shadow-sm items-center w-[50%] bg-base-300">
             <div className="flex w-full h-full justify-center items-center gap-6">
               <figure className="w-80 p-4">
                 <img
@@ -51,6 +52,9 @@ function Connections() {
                 <p className="text-xl"> About - {connection.about}</p>
               </div>
             </div>
+            <Link to={`/chat/${connection._id}`}>
+            <button className="btn btn-primary">Chat</button>
+            </Link>
           </div>
         ))}
       </div>
