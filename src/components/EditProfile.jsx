@@ -41,13 +41,13 @@ function EditProfile({ user }) {
   };
 
   return (
-    <div className="flex justify-center mt-6 gap-5">
+    <div className="flex justify-center mt-1 gap-5 text-sm">
       <div className="card card-dash bg-base-300 w-96">
-        <div className="card-body ">
-          <div className="m-auto">
+        <div className="card-body">
+          <div className="mx-auto ">
             <h1>Edit Profile</h1>
           </div>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">First Name</legend>
             <input
               type="text"
@@ -56,7 +56,7 @@ function EditProfile({ user }) {
               onChange={(e) => setfirstName(e.target.value)}
             />
           </fieldset>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">Last Name</legend>
             <input
               type="text"
@@ -65,7 +65,7 @@ function EditProfile({ user }) {
               onChange={(e) => setlastName(e.target.value)}
             />
           </fieldset>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">Photo Url</legend>
             <input
               type="text"
@@ -74,7 +74,7 @@ function EditProfile({ user }) {
               onChange={(e) => setphotoUrl(e.target.value)}
             />
           </fieldset>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">Age</legend>
             <input
               type="text"
@@ -83,7 +83,7 @@ function EditProfile({ user }) {
               onChange={(e) => setAge(e.target.value)}
             />
           </fieldset>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">Gender</legend>
             <input
               type="text"
@@ -92,7 +92,7 @@ function EditProfile({ user }) {
               onChange={(e) => setGender(e.target.value)}
             />
           </fieldset>
-          <fieldset className="fieldset p-2">
+          <fieldset className="fieldset px-2">
             <legend className="fieldset-legend">About</legend>
             <input
               type="text"
