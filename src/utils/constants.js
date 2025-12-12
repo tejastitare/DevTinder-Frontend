@@ -10,4 +10,4 @@
 export const BASE_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:7777"
-    : "https://developer-connect-backend.onrender.com/";
+    : "https://developer-connect-backend.onrender.com";
