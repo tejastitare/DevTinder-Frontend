@@ -22,7 +22,7 @@ function UserCard({ user }) {
   return (
     <div className="card bg-base-200 w-64 shadow-sm items-center">
       <figure>
-        <img src={photoUrl} alt="photo" />
+        <img className="p-5" src={photoUrl} alt="photo" />
       </figure>
       <div className="card-body">
         <h2 className="card-title gap-2">
