@@ -55,7 +55,7 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center mt-20">
+    <div className="flex justify-center mt-10">
       <div className="card card-dash bg-base-300 w-96">
         <div className="card-body">
           {!IsLoginForm && (
