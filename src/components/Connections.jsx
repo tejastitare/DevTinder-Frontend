@@ -21,40 +21,62 @@ function Connections() {
 
   useEffect(() => {
     fetchConnections();
-  }, []);
+  });
 
   if (!connections) return;
 
-  if (connections.length === 0) return <div className="flex justify-center items-center p-3 mt-3 font-semibold">No Connections Found !</div>;
+  if (connections.length === 0)
+    return (
+      <div className="flex justify-center items-center p-3 mt-3 font-semibold">
+        No Connections Found !
+      </div>
+    );
   return (
-    <div className="justify-center items-center mt-4 flex flex-col">
-      <h1 className="text-3xl font-bold mb-4">Connections</h1>
+    <div className="flex flex-col items-center mt-4 px-4 md:px-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-4">Connections</h1>
 
-      <div className="card-body text-white text-3xl w-full flex gap-4 items-center">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {connections.map((connection, index) => (
-          <div key={index} className="card px-8 flex flex-row shadow-sm items-center w-[50%] bg-base-300">
-            <div className="flex w-full h-full justify-center items-center gap-6">
-              <figure className="w-80 p-4">
+          <div
+            key={index}
+            className="bg-base-300 rounded-lg shadow-sm overflow-hidden flex flex-col md:flex-row items-center md:items-stretch justify-between p-4"
+          >
+            <figure className="flex-shrink-0 w-full md:w-28 lg:w-36 flex justify-center md:justify-start">
+              <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden">
                 <img
-                  className="rounded-full w-full h-40"
                   src={connection.photoUrl}
-                  alt="Shoes"
+                  alt={`${connection.firstName} ${connection.lastName}`}
+                  className="w-full h-full object-cover"
                 />
-              </figure>
-              <div className="w-full space-y-2">
-                <h2 className="card-title">
-                  {connection.firstName} {connection.lastName}
-                </h2>
-                <p className="text-xl">
-                  {" "}
-                  Age - {connection.age} , Gender - {connection.gender}
-                </p>
-                <p className="text-xl"> About - {connection.about}</p>
               </div>
+            </figure>
+
+            <div className="flex-1 w-full md:px-4 mt-3 md:mt-0">
+              <h2 className="text-lg md:text-xl font-semibold">
+                {connection.firstName} {connection.lastName}
+              </h2>
+
+              <p className="text-sm md:text-base mt-1">
+                <span className="font-medium">Age</span> - {connection.age} ·{" "}
+                <span className="font-medium">Gender</span> -{" "}
+                {connection.gender}
+              </p>
+
+              <p className="text-sm md:text-base mt-2 max-h-16 md:max-h-20 overflow-hidden">
+                <span className="font-medium">About</span> - {connection.about}
+              </p>
             </div>
-            <Link to={`/chat/${connection._id}`}>
-            <button className="btn btn-primary">Chat</button>
-            </Link>
+
+            <div className="w-full md:w-auto mt-3 md:mt-0 md:ml-4 flex-shrink-0 flex md:items-center">
+              <Link to={`/chat/${connection._id}`} className="w-full md:w-auto">
+                <button
+                  className="btn btn-primary w-full md:w-auto"
+                  aria-label={`Chat with ${connection.firstName}`}
+                >
+                  Chat
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

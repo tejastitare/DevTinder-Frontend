@@ -44,55 +44,65 @@ function Requests() {
 
   if (requests.length === 0) return <div className="flex justify-center items-center mt-5 text-3xl font-semibold">No Requests Found !</div>;
   return (
-    <div className="justify-center items-center mt-4 flex flex-col">
-      <h1 className="text-3xl font-bold mb-4">Requests</h1>
+   <div className="justify-center items-center mt-4 flex flex-col px-4">
+  <h1 className="text-3xl font-bold mb-4">Requests</h1>
 
-      <div className="card-body text-white text-3xl w-full flex gap-4 items-center">
-        {requests.map((request, index) => {
-          const { _id, firstName, lastName, photoUrl, age, gender, about } =
-            request.fromUserId;
-          return (
-            <div
-              key={_id}
-              className="card shadow-sm items-center w-[40%] bg-base-300"
-            >
-              <div className="flex w-full h-full justify-center items-center gap-6 ml-12">
-                <figure className="w-80 p-2">
-                  <img
-                    className="rounded-full w-full h-32"
-                    src={photoUrl}
-                    alt="Image"
-                  />
-                </figure>
-                <div className="w-[80%] space-y-2">
-                  <h2 className="card-title">
-                    {firstName} {lastName}
-                  </h2>
-                  <p className="text-xl">
-                    Age - {age} , Gender - {gender}
-                  </p>
-                  <p className="text-xl"> About - {about}</p>
-                </div>
-                <div className="flex mr-36 gap-6">
-                  <button
-                    onClick={() => reviewRequest("rejected", request._id)}
-                    className="btn btn-primary"
-                  >
-                    Reject
-                  </button>
-                  <button
-                    onClick={() => reviewRequest("accepted", request._id)}
-                    className="btn btn-secondary"
-                  >
-                    Accept
-                  </button>
-                </div>
-              </div>
+  <div className="text-white w-full flex flex-wrap gap-4">
+    {requests.map((request) => {
+      const { _id, firstName, lastName, photoUrl, age, gender, about } =
+        request.fromUserId;
+
+      return (
+        <div
+          key={_id}
+          className="card bg-base-300 shadow-sm rounded-lg w-full md:w-[48%] lg:w-[32%] p-4"
+        >
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4 w-full">
+
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0">
+              <img
+                src={photoUrl}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
-          );
-        })}
-      </div>
-    </div>
+
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg md:text-xl font-bold truncate">
+                {firstName} {lastName}
+              </h2>
+
+              <p className="text-sm md:text-base">
+                Age - {age} , Gender - {gender}
+              </p>
+
+              <p className="text-sm md:text-base max-h-20 overflow-hidden">
+                About - {about}
+              </p>
+            </div>
+
+            <div className="flex flex-row md:flex-col gap-3 flex-shrink-0">
+              <button
+                onClick={() => reviewRequest("rejected", request._id)}
+                className="btn btn-primary btn-sm md:btn-md"
+              >
+                Reject
+              </button>
+              <button
+                onClick={() => reviewRequest("accepted", request._id)}
+                className="btn btn-secondary btn-sm md:btn-md"
+              >
+                Accept
+              </button>
+            </div>
+
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
   );
 }
 
