@@ -44,7 +44,7 @@ function Requests() {
 
   if (requests.length === 0) return <div className="flex justify-center items-center mt-5 text-3xl font-semibold">No Requests Found !</div>;
   return (
-   <div className="justify-center items-center mt-4 flex flex-col px-4">
+   <div className="justify-center items-center mt-4 flex flex-col px-4 mb-36">
   <h1 className="text-3xl font-bold mb-4">Requests</h1>
 
   <div className="text-white w-full flex flex-wrap gap-4">

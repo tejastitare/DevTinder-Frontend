@@ -123,7 +123,7 @@ function EditProfile({ user }) {
     </div>
   </div>
 
-  <div className="w-full md:w-[360px] lg:w-[400px] flex-shrink-0 mb-24">
+  <div className="w-full md:w-[360px] lg:w-[400px] flex-shrink-0 mb-24 mb-32">
     <UserCard user={{ firstName, lastName, photoUrl, age, gender, about }} />
   </div>
 

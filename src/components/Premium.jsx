@@ -56,7 +56,7 @@ const Premium = () => {
   return isUserPremium ? (
     "You are Already a premium User"
   ) : (
-    <div className="min-h-scree flex justify-center items-center p-6">
+    <div className="min-h-scree flex justify-center items-center p-6 mb-40">
       <div className="max-w-5xl w-full">
         <h1 className="text-4xl font-bold text-center mb-10">
           Choose Your Plan
